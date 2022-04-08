@@ -4,14 +4,14 @@ Time-based one-time password demonstration
 ## URI Format
 
 ```
-otpauth://totp/$ISSUER:$ACCOUNT_NAME?secret=$BASE32_KEY&issuer=$ISSUER&algorithm=$ALGORITHM&digits=$DIGITS&period=$SECONDS$
+otpauth://totp/{{issuer}}:{{account_name}}?secret={{key_with_base32_format}}&issuer={{issuer}}&algorithm={{algorithm}}&digits={{digits}}&period={{period}}
 ```
 
-- ALGORITHM: SHA-1
-- ISSUER: Organization
-- ACCOUNT_NAME: Email
-- DIGITS: 6
-- SECONDS: 30
+- algorithm: SHA-1
+- issuer: Provider
+- account_name: Email
+- digits: Numer of digit [6,8]. default: 6
+- period: Period in second, default: 30
 
 
 ## Reference
