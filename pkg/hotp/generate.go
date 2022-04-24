@@ -16,7 +16,7 @@ func HOTP(key []byte, counter []byte, digit int) string {
 	// Step 2: Generate a 4-byte string (Dynamic Truncation)
 	code := DynamicTruncate(hmacResult)
 
-	//  Step 3: Compute an HOTP value, Return D = Snum mod 10^Digit
+	// Step 3: Compute an HOTP value, Return D = Snum mod 10^Digit
 	value := code % int64(math.Pow10(digit))
 
 	format := fmt.Sprintf("%%0%dd", digit)
