@@ -22,5 +22,7 @@ func gernerateCode(cmd *cobra.Command, args []string) {
 		panic(err)
 	}
 
+	fmt.Println(base32.StdEncoding.EncodeToString(totp.GenerateHMAC(secret, []byte(`ไปเที่ยวเขื่อนกัน`))))
+
 	fmt.Println(totp.TOTP(secret, time.Now(), 30, 6))
 }

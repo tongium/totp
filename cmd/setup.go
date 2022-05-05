@@ -1,6 +1,7 @@
 package cmd
 
 import (
+	"encoding/base32"
 	"fmt"
 	"math/rand"
 	"time"
@@ -31,4 +32,14 @@ func generateSetupURI(cmd *cobra.Command, args []string) {
 	}
 
 	fmt.Println(totp.CreateSetupURI(key, issuer, accountName, 6, 30))
+}
+
+func generateKey() string {
+	rand.Seed(time.Now().UnixNano())
+	key := make([]byte, 20)
+	if _, err := rand.Read(key); err != nil {
+		panic(err)
+	}
+
+	return base32.StdEncoding.EncodeToString(key)
 }

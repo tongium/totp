@@ -1,4 +1,4 @@
-package hotp_test
+package totp_test
 
 import (
 	"crypto/hmac"
@@ -8,7 +8,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/tongium/totp/pkg/hotp"
+	"github.com/tongium/totp/pkg/totp"
 )
 
 var hmacResult []byte
@@ -30,13 +30,13 @@ func setup() {
 func BenchmarkDynamicTruncateWithDumbImplement(b *testing.B) {
 	setup()
 	for i := 0; i < b.N; i++ {
-		hotp.DynamicTruncateExplaination(hmacResult)
+		totp.DynamicTruncateExplaination(hmacResult)
 	}
 }
 
 func BenchmarkDynamicTruncate(b *testing.B) {
 	setup()
 	for i := 0; i < b.N; i++ {
-		hotp.DynamicTruncate(hmacResult)
+		totp.DynamicTruncate(hmacResult)
 	}
 }
