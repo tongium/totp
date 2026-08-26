@@ -1,21 +1,45 @@
 # totp
-Time-based one-time password demonstration
 
-## URI Format
+Simple CLI demonstration for Time-based One-Time Passwords (TOTP).
 
+## Requirements
+
+- Go 1.18+
+
+## Build
+
+```bash
+go build ./...
 ```
-otpauth://totp/{{issuer}}:{{account_name}}?secret={{key_with_base32_format}}&issuer={{issuer}}&algorithm={{algorithm}}&digits={{digits}}&period={{period}}
+
+## Usage
+
+Generate a setup URI:
+
+```bash
+go run . setup --issuer Provider --account user@example.com
 ```
 
-- algorithm: SHA-1
-- issuer: Provider
-- account_name: Email
-- digits: Numer of digit [6,8]. default: 6
-- period: Period in second, default: 30
+Generate a TOTP code from a Base32 secret:
 
+```bash
+go run . code JBSWY3DPEHPK3PXP
+```
 
-## Reference
+## URI format
 
-- [URI Format](https://github.com/google/google-authenticator/wiki/Key-Uri-Format)
+```text
+otpauth://totp/{{issuer}}:{{account_name}}?secret={{base32_secret}}&issuer={{issuer}}&algorithm={{algorithm}}&digits={{digits}}&period={{period}}
+```
+
+- algorithm: `sha-1`
+- issuer: provider or service name
+- account_name: account identifier (for example email)
+- digits: number of digits (commonly 6 or 8; default 6)
+- period: code validity period in seconds (default 30)
+
+## References
+
+- [Google Authenticator Key URI Format](https://github.com/google/google-authenticator/wiki/Key-Uri-Format)
 - [TOTP](https://en.wikipedia.org/wiki/Time-based_one-time_password)
-- [HOTP](https://datatracker.ietf.org/doc/html/rfc4226)
+- [HOTP (RFC 4226)](https://datatracker.ietf.org/doc/html/rfc4226)
