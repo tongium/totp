@@ -32,7 +32,7 @@ go run . code JBSWY3DPEHPK3PXP
 otpauth://totp/{{issuer}}:{{account_name}}?secret={{base32_secret}}&issuer={{issuer}}&algorithm={{algorithm}}&digits={{digits}}&period={{period}}
 ```
 
-- algorithm: `sha-1`
+- algorithm: `SHA-1`
 - issuer: provider or service name
 - account_name: account identifier (for example email)
 - digits: number of digits (commonly 6 or 8; default 6)
